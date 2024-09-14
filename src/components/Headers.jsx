@@ -6,7 +6,7 @@ function Headers() {
   const globalState = usePullUP();
   return (
     <section
-      className={`flex items-center justify-between w-full h-full p-2 ${
+      className={`flex items-center justify-between w-full mt-2 p-2  ${
         !globalState.pullState
           ? "origin-center -translate-y-80 transition-transform"
           : ""

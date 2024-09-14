@@ -15,13 +15,12 @@ function Footer() {
 
   return (
     <div
-      className="p-3 w-full  flex flex-col items-center gap-2 sm:max-w-[1024px]"
+      className="p-0 w-full sm:max-w-[1024px] absolute bottom-0 sm:bottom-1"
       onClick={handlePullUp}
     >
-      <div className="">
-        <ChevronUp size={50} color="#666666" />
+      <div className="w-full p-0 -mb-3">
+        <ChevronUp size={40} color="#666666" className="mr-auto ml-auto" />
       </div>
-
       <p className="text-center w-full opacity-[0,2832] p-0 ">
         PULL UP THE SONG LIST
       </p>

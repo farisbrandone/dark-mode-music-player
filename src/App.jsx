@@ -1,6 +1,4 @@
 import { useReducer, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import "./index.css";
 import Headers from "./components/Headers";
@@ -20,7 +18,6 @@ export const PullUpContext = createContext(null);
 export const PullUpDispatchContext = createContext(null);
 
 function App() {
-  const [count, setCount] = useState(0);
   const initialStatus = {
     pullState: true,
     textState: true,
@@ -31,9 +28,15 @@ function App() {
   return (
     <PullUpContext.Provider value={globalState}>
       <PullUpDispatchContext.Provider value={dispatch}>
-        <div className="w-full sm:max-w-[1024px] rounded-[28px] p-3 flex flex-col gap-8 ">
+        <div
+          className={`w-full sm:max-w-[1024px] rounded-[28px] h-screen flex flex-col items-center gap-8 lg:gap-14 ${
+            !globalState.textState && "gap-4 lg:gap-8"
+          }`}
+        >
           <Headers></Headers>
-          {!globalState.textState && <HandleVolume></HandleVolume>}
+          {!globalState.textState && globalState.pullState && (
+            <HandleVolume></HandleVolume>
+          )}
           {globalState.textState && <PartImages></PartImages>}
           {globalState.textState && globalState.pullState && (
             <MusicTexts></MusicTexts>
@@ -41,17 +44,17 @@ function App() {
           {!globalState.textState && globalState.pullState && (
             <TextSongFullOpen></TextSongFullOpen>
           )}
-          <MusicTimeListen></MusicTimeListen>
+          {globalState.pullState && <MusicTimeListen></MusicTimeListen>}
           {globalState.pullState ? (
             <StartStopMusicPart></StartStopMusicPart>
           ) : (
-            <div className="w-full flex flex-col gap-10">
+            <div className="w-full flex flex-col gap-6">
               <ArrowAndHeart></ArrowAndHeart>
               <ListySong></ListySong>
             </div>
           )}
+          {globalState.pullState && <Footer></Footer>}
         </div>
-        {globalState.pullState && <Footer></Footer>}
       </PullUpDispatchContext.Provider>
     </PullUpContext.Provider>
   );
