@@ -31,12 +31,16 @@ function App() {
   return (
     <PullUpContext.Provider value={globalState}>
       <PullUpDispatchContext.Provider value={dispatch}>
-        <div className="w-full sm:max-w-[1024px] rounded-[28px] p-3 flex flex-col gap-8">
+        <div className="w-full sm:max-w-[1024px] rounded-[28px] p-3 flex flex-col gap-8 ">
           <Headers></Headers>
           {!globalState.textState && <HandleVolume></HandleVolume>}
           {globalState.textState && <PartImages></PartImages>}
-          {globalState.textState && <MusicTexts></MusicTexts>}
-          {!globalState.textState && <TextSongFullOpen></TextSongFullOpen>}
+          {globalState.textState && globalState.pullState && (
+            <MusicTexts></MusicTexts>
+          )}
+          {!globalState.textState && globalState.pullState && (
+            <TextSongFullOpen></TextSongFullOpen>
+          )}
           <MusicTimeListen></MusicTimeListen>
           {globalState.pullState ? (
             <StartStopMusicPart></StartStopMusicPart>

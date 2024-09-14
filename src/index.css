@@ -17,6 +17,7 @@
 body {
   margin: 0;
   display: flex;
+  height: 100vh;
   @apply bg-gradient-to-r from-bgGradColor1 from-100% to-bgGradColor2 to-100% text-textColors;
 }
 

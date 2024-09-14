@@ -14,7 +14,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 
 # Installer les dépendances
-COPY COPY ./package*.json ./
+COPY ./package*.json ./
 RUN npm install
 
 # Copier le reste des fichiers de l'application
