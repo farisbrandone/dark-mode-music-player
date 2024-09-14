@@ -22,8 +22,8 @@ export const PullUpDispatchContext = createContext(null);
 function App() {
   const [count, setCount] = useState(0);
   const initialStatus = {
-    pullState: "true",
-    textState: "true",
+    pullState: true,
+    textState: true,
   };
 
   const [globalState, dispatch] = useReducer(PullUpReducer, initialStatus);
