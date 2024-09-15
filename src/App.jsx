@@ -48,7 +48,7 @@ function App() {
           {globalState.pullState ? (
             <StartStopMusicPart></StartStopMusicPart>
           ) : (
-            <div className="w-full flex flex-col gap-6">
+            <div className="w-full sm:min-w-[650px] flex flex-col gap-6">
               <ArrowAndHeart></ArrowAndHeart>
               <ListySong></ListySong>
             </div>

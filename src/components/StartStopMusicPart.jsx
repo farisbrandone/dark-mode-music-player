@@ -10,9 +10,11 @@ function StartStopMusicPart() {
 
       <div className=" rounded-full w-[81px] h-[80px] start-stop-button flex items-center justify-center  ">
         <Play
+          fill="#FFFFFF"
           color="#FFFFFF"
-          className="w-[22px] h-[34.22px] "
-          strokeWidth={10}
+          size={1}
+          strokeWidth={1}
+          className="w-[80px] h-[80px]"
         />
       </div>
 
