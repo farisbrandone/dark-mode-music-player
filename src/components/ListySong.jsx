@@ -5,9 +5,11 @@ import { Pause, Play } from "lucide-react";
 import ElementForListSong from "./ElementForListSong";
 
 function ListySong({ isPlaying, setIsPlaying }) {
-  const [disableButton, setDisableButton] = useState("aucun");
   const dispatch = usePullUpDispatch();
   const globalState = usePullUP();
+  const [disableButton, setDisableButton] = useState(
+    !isPlaying ? "click" : "noclick"
+  );
 
   const handlePullDown = () => {
     dispatch({

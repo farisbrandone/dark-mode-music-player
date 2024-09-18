@@ -17,7 +17,7 @@ function TextSongFullOpen() {
   const [textStatus, setTextStatus] = useState(initialStatus);
   return (
     <div
-      className="w-full flex-1 p-4 flex flex-col items-center gap-4 overflow-hidden snap-center max-h-[400px] sm:max-h-[500px]"
+      className="w-full flex-1 p-4 flex flex-col items-center gap-4 overflow-hidden snap-center max-h-[400px] sm:max-h-[500px] cursor-pointer"
       onClick={handleOpenText}
     >
       {database.data[0]["music-text"].split(".").map((text, index) => (

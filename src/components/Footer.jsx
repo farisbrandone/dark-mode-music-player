@@ -15,7 +15,7 @@ function Footer() {
 
   return (
     <div
-      className="p-0 w-full sm:max-w-[1024px] absolute bottom-0 sm:bottom-1"
+      className="p-0 w-full sm:max-w-[1024px] absolute bottom-0 sm:bottom-1 cursor-pointer"
       onClick={handlePullUp}
     >
       <div className="w-full p-0 -mb-3">

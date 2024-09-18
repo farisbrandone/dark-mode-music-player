@@ -18,7 +18,7 @@ function MusicTexts() {
 
   return (
     <div
-      className="w-full h-[98px] p-4 flex flex-col items-center gap-4 overflow-hidden snap-center"
+      className="w-full h-[98px] p-4 flex flex-col items-center gap-4 overflow-hidden snap-center cursor-pointer"
       onClick={handleOpenText}
     >
       {database.data[0]["music-text"].split(".").map((text, index) => (

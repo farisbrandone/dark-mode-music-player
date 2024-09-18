@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { usePullUP, usePullUpDispatch } from "../hooks/usePullUpDispatch";
 import { isEqual as isEqual2 } from "../utility/isEqual";
 
+const classconst = "buttonToggle";
+
 function ElementForListSong({
   songs,
   index,
@@ -20,38 +22,62 @@ function ElementForListSong({
   const audioElement = useRef(null);
 
   /* */
-  const classconst = "buttonToggle";
+
   const changeClass = () => {
     setIsPlaying((prev) => !prev);
     dispatch({
       type: "skip-to-index",
       index: index,
     });
+
     if (
-      (classValue === "" && disableButton === "aucun") ||
-      (classValue === "" && disableButton === "noclick")
+      /*(classValue === "" && disableButton === "aucun") ||*/
+      /* classValue === "" && */ disableButton === "noclick"
     ) {
-      setDisableButton((prev) => {
+      setDisableButton(
+        "click" /* (prev) => {
         if (prev === "aucun") {
           return "click";
-        } else if (prev === "click") {
+        } else  if (prev === "click") {
           return "noclick";
         } else {
           return "click";
         }
-      });
-      setClassValue(classconst);
+      } */
+      );
+      if (isEqual2(songs[globalState.indexState], song)) {
+        setClassValue("buttonToggle");
+      }
       return;
     }
-    if (classValue !== "" && disableButton === "click") {
+    if (/* classValue !== "" &&  */ disableButton === "click") {
       setDisableButton("noclick");
+      if (isEqual2(songs[globalState.indexState], song)) {
+        setClassValue("buttonToggle");
+        return;
+      }
       setClassValue("");
+      return;
     }
     setClassValue("");
   };
 
-  /*  useEffect(() => {
-    audioElement.current.volume = globalState.audioVolume;
+  useEffect(() => {
+    console.log({
+      value: isEqual2(songs[globalState.indexState], song),
+      index: index,
+    });
+    if (isEqual2(songs[globalState.indexState], song)) {
+      setClassValue("buttonToggle");
+    } else {
+      setClassValue("");
+    }
+    /*setIsPlaying((prev) => !prev);*/
+    /*dispatch({
+      type: "skip-to-index",
+      index: index,
+    });*/
+    /* audioElement.current.volume = globalState.audioVolume;
     const indexState = globalState.indexState;
     let isEqual = isEqual2(songs[globalState.indexState], song);
     console.log(isEqual);
@@ -81,14 +107,16 @@ function ElementForListSong({
         type: "current-total-time",
         currentTime: currentTime,
         duration: duration,
-      });
-    });
-  }, [isPlaying, globalState, classValue, disableButton]); */
+      }); 
+    });*/
+  }, [classValue, disableButton]);
 
   return (
     <button
       key={song.title}
-      className={"w-full flex justify-between items-center " + classValue}
+      className={
+        "w-full flex justify-between items-center cursor-pointer " + classValue
+      }
       onClick={changeClass}
     >
       <div className="flex-1 p-2">
