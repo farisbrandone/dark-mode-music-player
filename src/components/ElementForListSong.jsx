@@ -2,6 +2,8 @@ import { Pause, Play } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { usePullUP, usePullUpDispatch } from "../hooks/usePullUpDispatch";
 
+import isEqual from "../utility/isEqual";
+
 function ElementForListSong({
   songs,
   index,
@@ -16,9 +18,7 @@ function ElementForListSong({
   const [classValue, setClassValue] = useState("");
   const audioElement = useRef(null);
 
-  /* const indexState = globalState.indexState;
-  let isEqual = isEqual(songs[indexState], song)
-  console.log(isEqual);*/
+  /* */
   const classconst = "buttonToggle";
   const changeClass = () => {
     if (
@@ -46,6 +46,16 @@ function ElementForListSong({
 
   useEffect(() => {
     audioElement.current.volume = globalState.audioVolume;
+    const indexState = globalState.indexState;
+    let isEqual = isEqual(songs[indexState], song);
+    console.log(isEqual);
+
+    if (!isEqual) {
+      setClassValue("");
+      audioElement.current.pause();
+      setIsPlaying(false);
+      return;
+    }
 
     if (isPlaying) {
       audioElement.current.play();
