@@ -16,13 +16,13 @@ function ListySong() {
     });
   };
   return (
-    <div className="ml-0 mr-0 min-h-[72vh] -mb-10 p-0 flex flex-col items-center gap-2 w-screen sm:w-full list-style overflow-y-scroll relative ">
+    <div className="ml-0 mr-0 max-h-[72vh]  p-0 flex flex-col items-center gap-2 w-screen sm:w-full list-style  relative  ">
       <div
         className="w-[30%] h-[5px] bg-[#272C32] line top-6 absolute ml-auto mr-auto"
         onClick={handlePullDown}
       ></div>
 
-      <div className="w-full flex flex-col items-center gap-4 mt-8">
+      <div className="w-full flex flex-col items-center gap-4 mt-8 p-4 mb-8 overflow-y-auto list-style-song">
         {songs.data.map((song, index) => (
           <ElementForListSong
             songs={songs}

@@ -13,6 +13,7 @@ import TextSongFullOpen from "./components/TextSongFullOpen";
 import HandleVolume from "./components/HandleVolume";
 import ListySong from "./components/ListySong";
 import Footer from "./components/Footer";
+import { songs } from "../songs";
 
 export const PullUpContext = createContext(null);
 export const PullUpDispatchContext = createContext(null);
@@ -21,6 +22,11 @@ function App() {
   const initialStatus = {
     pullState: true,
     textState: true,
+    songsState: songs,
+    indexState: 0,
+    currentTime: 0,
+    duration: 1,
+    audioVolume: "0",
   };
 
   const [globalState, dispatch] = useReducer(PullUpReducer, initialStatus);

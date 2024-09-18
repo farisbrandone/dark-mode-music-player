@@ -13,7 +13,7 @@ function PartImages() {
     >
       <div className="rounded-full w-[267px] h-[267px] shadow-custumShadow1 shadow-custumShadow2 border-image-source overflow-hidden flex items-center justify-center ">
         <img
-          src="./images/images.jpeg"
+          src={globalState.songsState[globalState.indexState].img_src}
           alt="Music images"
           className="object-cover"
         />

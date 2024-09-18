@@ -20,9 +20,11 @@ function Headers() {
         />
       </div>
       <div className="font-[400] leading-[24px]">
-        <h1 className="w-full p-0 text-[#999999] text-[24px] ">THE MONSTER</h1>
+        <h1 className="w-full p-0 text-[#999999] text-[24px] ">
+          {globalState.songsState[globalState.indexState].title}
+        </h1>
         <h4 className="p-0 w-full text-textColors/[0.4979] text-[14px] leading-[14px]">
-          EMINEM/ RIHANNA
+          {globalState.songsState[globalState.indexState].artist}
         </h4>
       </div>
       <div className="rounded-head">

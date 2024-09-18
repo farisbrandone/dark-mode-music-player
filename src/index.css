@@ -159,7 +159,7 @@ body {
   background-clip: padding-box, border-box;
 }
 .list-style {
-  border-radius: 37px 37px 0px 0px;
+  border-radius: 37px 37px 37px 37px;
   border: 3px 0px 0px 0px;
   opacity: 0px;
 
@@ -201,4 +201,29 @@ body {
 
 .heart-style {
   background: linear-gradient(140.14deg, #ec540e 15.05%, #d6361f 114.99%);
+}
+
+/* width */
+.list-style-song::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+.list-style-song::-webkit-scrollbar-track {
+  background: #272c32;
+}
+
+/* Handle */
+.list-style-song::-webkit-scrollbar-thumb {
+  background: #56595c;
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+.list-style-song::-webkit-scrollbar-thumb:hover {
+  background: #bebdbde5;
+}
+.list-style-song::-webkit-scrollbar-corner {
+  /* Coin de la fenêtre */
+  background: #bfb6a3;
 }
