@@ -21,7 +21,6 @@ function ElementForListSong({
   console.log(isEqual);*/
   const classconst = "buttonToggle";
   const changeClass = () => {
-    console.log({ disableButton, classValue });
     if (
       (classValue === "" && disableButton === "aucun") ||
       (classValue === "" && disableButton === "noclick")
@@ -47,10 +46,9 @@ function ElementForListSong({
 
   useEffect(() => {
     audioElement.current.volume = globalState.audioVolume;
-    console.log({ trueVolume: audioElement.current.volume });
+
     if (isPlaying) {
       audioElement.current.play();
-      console.log(audioElement.current.currentTime);
     } else {
       audioElement.current.pause();
     }
@@ -59,11 +57,9 @@ function ElementForListSong({
       if (audioElement) {
         currentTime = audioElement.current.currentTime;
         duration = audioElement.current.duration;
-        console.log("doudou");
       } else {
         currentTime = 0;
         duration = audioElement.current.duration;
-        console.log("dada");
       }
       dispatch({
         type: "current-total-time",

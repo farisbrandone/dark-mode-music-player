@@ -8,7 +8,7 @@ function HandleVolume() {
   const globalState = usePullUP();
   const handleVolume = (e) => {
     e.preventDefault();
-    console.log("colotoure");
+
     setVolume(e.target.value);
     dispatch({
       type: "change-volume",

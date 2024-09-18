@@ -24,11 +24,9 @@ function MusicTimeListen() {
   /*const progress = (currentTime / duration) * 100;*/
 
   useEffect(() => {
-    console.log({ time: globalState.currentTime });
-    console.log({ duretotal: globalState.duration });
     setCurrentTime(globalState.currentTime);
     setDuration(globalState.duration);
-    console.log({ progress: (currentTime / duration) * 100 });
+
     setclassNew(
       `h-[5px] w-[${
         (currentTime / duration) * 100

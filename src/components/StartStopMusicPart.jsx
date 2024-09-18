@@ -40,10 +40,9 @@ function StartStopMusicPart({ isPlaying, setIsPlaying }) {
   };
   useEffect(() => {
     audioElement.current.volume = globalState.audioVolume;
-    console.log({ trueVolume: audioElement.current.volume });
+
     if (isPlaying) {
       audioElement.current.play();
-      console.log(audioElement.current.currentTime);
     } else {
       audioElement.current.pause();
     }
@@ -52,11 +51,9 @@ function StartStopMusicPart({ isPlaying, setIsPlaying }) {
       if (audioElement) {
         currentTime = audioElement.current.currentTime;
         duration = audioElement.current.duration;
-        console.log("doudou");
       } else {
         currentTime = 0;
         duration = audioElement.current.duration;
-        console.log("dada");
       }
 
       /* const currentMinutes = Math.floor(currentTime / 60);
