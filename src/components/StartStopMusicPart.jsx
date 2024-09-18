@@ -38,7 +38,7 @@ function StartStopMusicPart({ isPlaying, setIsPlaying }) {
       index: 0,
     });
   };
-  useEffect(() => {
+  /*  useEffect(() => {
     audioElement.current.volume = globalState.audioVolume;
 
     if (isPlaying) {
@@ -55,24 +55,13 @@ function StartStopMusicPart({ isPlaying, setIsPlaying }) {
         currentTime = 0;
         duration = audioElement.current.duration;
       }
-
-      /* const currentMinutes = Math.floor(currentTime / 60);
-      const currentSeconds = Math.floor(currentTime % 60);
-      const totalMinutes = Math.floor(duration / 60);
-      const totalSeconds = Math.floor(duration % 60);*/
-
-      /* currentTimeDisplay.textContent = `${currentMinutes}:${currentSeconds < 10 ? '0' : ''}${currentSeconds}`;
-      totalTimeDisplay.textContent = `${totalMinutes}:${totalSeconds < 10 ? '0' : ''}${totalSeconds}`;
-  
-      const progress = (currentTime / duration) * 100;
-      progressBar.style.width = `${progress}%`;*/
       dispatch({
         type: "current-total-time",
         currentTime: currentTime,
         duration: duration,
       });
     });
-  }, [isPlaying, globalState]);
+  }, [isPlaying, globalState]); */
 
   return (
     <div className="w-full p-4 flex items-center justify-between">
@@ -81,10 +70,6 @@ function StartStopMusicPart({ isPlaying, setIsPlaying }) {
       </div>
 
       <div className=" rounded-full w-[81px] h-[80px] start-stop-button flex items-center justify-center  ">
-        <audio
-          src={songs[globalState.indexState].src}
-          ref={audioElement}
-        ></audio>
         <PlayStopMusicIcon isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
       </div>
       <div className="rounded-full w-[60px] h-[60px] go-right flex items-center justify-center">

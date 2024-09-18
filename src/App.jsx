@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import "./App.css";
 import "./index.css";
 import Headers from "./components/Headers";
@@ -31,6 +31,32 @@ function App() {
 
   const [globalState, dispatch] = useReducer(PullUpReducer, initialStatus);
   const [isPlaying, setIsPlaying] = useState(false);
+  const audioElement = useRef(null);
+
+  useEffect(() => {
+    audioElement.current.volume = globalState.audioVolume;
+
+    if (isPlaying) {
+      audioElement.current.play();
+    } else {
+      audioElement.current.pause();
+    }
+    audioElement.current.addEventListener("timeupdate", () => {
+      let currentTime, duration;
+      if (audioElement) {
+        currentTime = audioElement.current.currentTime;
+        duration = audioElement.current.duration;
+      } else {
+        currentTime = 0;
+        duration = audioElement.current.duration;
+      }
+      dispatch({
+        type: "current-total-time",
+        currentTime: currentTime,
+        duration: duration,
+      });
+    });
+  }, [isPlaying, globalState]);
 
   return (
     <PullUpContext.Provider value={globalState}>
@@ -52,13 +78,17 @@ function App() {
             <TextSongFullOpen></TextSongFullOpen>
           )}
           {globalState.pullState && <MusicTimeListen></MusicTimeListen>}
+          <audio
+            src={songs[globalState.indexState].src}
+            ref={audioElement}
+          ></audio>
           {globalState.pullState ? (
             <div className="w-full">
               {false && <ArrowAndHeart></ArrowAndHeart>}
               <StartStopMusicPart
                 isPlaying={isPlaying}
                 setIsPlaying={setIsPlaying}
-              ></StartStopMusicPart>
+              />
             </div>
           ) : (
             <div className="w-full sm:min-w-[650px] flex flex-col gap-6">

@@ -1,8 +1,7 @@
 import { Pause, Play } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { usePullUP, usePullUpDispatch } from "../hooks/usePullUpDispatch";
-
-import isEqual from "../utility/isEqual";
+import { isEqual as isEqual2 } from "../utility/isEqual";
 
 function ElementForListSong({
   songs,
@@ -15,12 +14,19 @@ function ElementForListSong({
 }) {
   const dispatch = usePullUpDispatch();
   const globalState = usePullUP();
-  const [classValue, setClassValue] = useState("");
+  const [classValue, setClassValue] = useState(
+    isEqual2(songs[globalState.indexState], song) ? "buttonToggle" : ""
+  );
   const audioElement = useRef(null);
 
   /* */
   const classconst = "buttonToggle";
   const changeClass = () => {
+    setIsPlaying((prev) => !prev);
+    dispatch({
+      type: "skip-to-index",
+      index: index,
+    });
     if (
       (classValue === "" && disableButton === "aucun") ||
       (classValue === "" && disableButton === "noclick")
@@ -44,10 +50,10 @@ function ElementForListSong({
     setClassValue("");
   };
 
-  useEffect(() => {
+  /*  useEffect(() => {
     audioElement.current.volume = globalState.audioVolume;
     const indexState = globalState.indexState;
-    let isEqual = isEqual(songs[indexState], song);
+    let isEqual = isEqual2(songs[globalState.indexState], song);
     console.log(isEqual);
 
     if (!isEqual) {
@@ -77,7 +83,7 @@ function ElementForListSong({
         duration: duration,
       });
     });
-  }, [isPlaying, globalState]);
+  }, [isPlaying, globalState, classValue, disableButton]); */
 
   return (
     <button
@@ -93,34 +99,14 @@ function ElementForListSong({
           {song.artist}
         </h4>
       </div>
-      <audio src={songs[globalState.indexState].src} ref={audioElement}></audio>
-      {classValue === "" ? (
-        <div className="rounded-full bg-[#1A1C20] play-for-list play-for-list-stop flex items-center justify-center mr-4">
-          <Play
-            color="#797C7F"
-            fill="#797C7F"
-            onClick={() => {
-              setIsPlaying((prev) => !prev);
-              dispatch({
-                type: "skip-to-index",
-                index: index,
-              });
-            }}
-          />
+      {/*  <audio src={songs[globalState.indexState].src} ref={audioElement}></audio> */}
+      {isPlaying && isEqual2(songs[globalState.indexState], song) ? (
+        <div className="rounded-full play-for-list play-for-list-start flex items-center justify-center mr-4">
+          <Pause color="#FFFFFF" fill="#FFFFFF" />
         </div>
       ) : (
-        <div className="rounded-full play-for-list play-for-list-start flex items-center justify-center mr-4">
-          <Pause
-            color="#FFFFFF"
-            fill="#FFFFFF"
-            onClick={() => {
-              setIsPlaying((prev) => !prev);
-              dispatch({
-                type: "skip-to-index",
-                index: index,
-              });
-            }}
-          />
+        <div className="rounded-full bg-[#1A1C20] play-for-list play-for-list-stop flex items-center justify-center mr-4">
+          <Play color="#797C7F" fill="#797C7F" />
         </div>
       )}
     </button>
