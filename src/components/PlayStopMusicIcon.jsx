@@ -3,7 +3,7 @@ import React from "react";
 
 function PlayStopMusicIcon({ isPlaying, setIsPlaying }) {
   return (
-    <div>
+    <div className="">
       {!isPlaying ? (
         <Play
           fill="#FFFFFF"

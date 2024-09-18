@@ -24,6 +24,9 @@ function PullUpReducer(status, action) {
     case "skip-to-down": {
       return { ...status, indexState: action.index };
     }
+    case "skip-to-index": {
+      return { ...status, indexState: action.index };
+    }
     case "current-total-time": {
       return {
         ...status,

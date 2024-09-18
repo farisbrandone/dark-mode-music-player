@@ -1,8 +1,24 @@
 import { Pause, Play } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { usePullUP, usePullUpDispatch } from "../hooks/usePullUpDispatch";
 
-function ElementForListSong({ songs, song, disableButton, setDisableButton }) {
+function ElementForListSong({
+  songs,
+  index,
+  song,
+  disableButton,
+  setDisableButton,
+  isPlaying,
+  setIsPlaying,
+}) {
+  const dispatch = usePullUpDispatch();
+  const globalState = usePullUP();
   const [classValue, setClassValue] = useState("");
+  const audioElement = useRef(null);
+
+  /* const indexState = globalState.indexState;
+  let isEqual = isEqual(songs[indexState], song)
+  console.log(isEqual);*/
   const classconst = "buttonToggle";
   const changeClass = () => {
     console.log({ disableButton, classValue });
@@ -28,6 +44,35 @@ function ElementForListSong({ songs, song, disableButton, setDisableButton }) {
     }
     setClassValue("");
   };
+
+  useEffect(() => {
+    audioElement.current.volume = globalState.audioVolume;
+    console.log({ trueVolume: audioElement.current.volume });
+    if (isPlaying) {
+      audioElement.current.play();
+      console.log(audioElement.current.currentTime);
+    } else {
+      audioElement.current.pause();
+    }
+    audioElement.current.addEventListener("timeupdate", () => {
+      let currentTime, duration;
+      if (audioElement) {
+        currentTime = audioElement.current.currentTime;
+        duration = audioElement.current.duration;
+        console.log("doudou");
+      } else {
+        currentTime = 0;
+        duration = audioElement.current.duration;
+        console.log("dada");
+      }
+      dispatch({
+        type: "current-total-time",
+        currentTime: currentTime,
+        duration: duration,
+      });
+    });
+  }, [isPlaying, globalState]);
+
   return (
     <button
       key={song.title}
@@ -42,13 +87,34 @@ function ElementForListSong({ songs, song, disableButton, setDisableButton }) {
           {song.artist}
         </h4>
       </div>
+      <audio src={songs[globalState.indexState].src} ref={audioElement}></audio>
       {classValue === "" ? (
         <div className="rounded-full bg-[#1A1C20] play-for-list play-for-list-stop flex items-center justify-center mr-4">
-          <Play color="#797C7F" fill="#797C7F" />
+          <Play
+            color="#797C7F"
+            fill="#797C7F"
+            onClick={() => {
+              setIsPlaying((prev) => !prev);
+              dispatch({
+                type: "skip-to-index",
+                index: index,
+              });
+            }}
+          />
         </div>
       ) : (
         <div className="rounded-full play-for-list play-for-list-start flex items-center justify-center mr-4">
-          <Pause color="#FFFFFF" fill="#FFFFFF" />
+          <Pause
+            color="#FFFFFF"
+            fill="#FFFFFF"
+            onClick={() => {
+              setIsPlaying((prev) => !prev);
+              dispatch({
+                type: "skip-to-index",
+                index: index,
+              });
+            }}
+          />
         </div>
       )}
     </button>

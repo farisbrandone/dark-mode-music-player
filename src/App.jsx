@@ -30,6 +30,7 @@ function App() {
   };
 
   const [globalState, dispatch] = useReducer(PullUpReducer, initialStatus);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <PullUpContext.Provider value={globalState}>
@@ -52,11 +53,20 @@ function App() {
           )}
           {globalState.pullState && <MusicTimeListen></MusicTimeListen>}
           {globalState.pullState ? (
-            <StartStopMusicPart></StartStopMusicPart>
+            <div className="w-full">
+              {false && <ArrowAndHeart></ArrowAndHeart>}
+              <StartStopMusicPart
+                isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
+              ></StartStopMusicPart>
+            </div>
           ) : (
             <div className="w-full sm:min-w-[650px] flex flex-col gap-6">
               <ArrowAndHeart></ArrowAndHeart>
-              <ListySong></ListySong>
+              <ListySong
+                isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
+              ></ListySong>
             </div>
           )}
           {globalState.pullState && <Footer></Footer>}

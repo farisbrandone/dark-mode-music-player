@@ -3,12 +3,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { usePullUP, usePullUpDispatch } from "../hooks/usePullUpDispatch";
 import PlayStopMusicIcon from "./PlayStopMusicIcon";
 
-function StartStopMusicPart() {
+function StartStopMusicPart({ isPlaying, setIsPlaying }) {
   const dispatch = usePullUpDispatch();
   const globalState = usePullUP();
   const audioElement = useRef(null);
-
-  const [isPlaying, setIsPlaying] = useState(false);
   const songs = globalState.songsState;
   const SkipBackMusik = () => {
     if (globalState.indexState < songs.length && globalState.indexState > 0) {
@@ -90,23 +88,6 @@ function StartStopMusicPart() {
           src={songs[globalState.indexState].src}
           ref={audioElement}
         ></audio>
-        {/*<div class="controls">
-            <button id="play-pause-button">Play</button>
-            <input
-              type="range"
-              id="volume-control"
-              min="0"
-              max="1"
-              step="0.01"
-              value="1"
-            />
-          </div>
-          <div class="progress">
-            <div class="progress-bar" id="progress-bar"></div>
-          </div>
-          <div id="current-time">0:00</div>
-          <div id="total-time">0:00</div>
-        </div>*/}
         <PlayStopMusicIcon isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
       </div>
       <div className="rounded-full w-[60px] h-[60px] go-right flex items-center justify-center">

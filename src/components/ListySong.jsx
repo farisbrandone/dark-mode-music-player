@@ -4,7 +4,7 @@ import { usePullUP, usePullUpDispatch } from "../hooks/usePullUpDispatch";
 import { Pause, Play } from "lucide-react";
 import ElementForListSong from "./ElementForListSong";
 
-function ListySong() {
+function ListySong({ isPlaying, setIsPlaying }) {
   const [disableButton, setDisableButton] = useState("aucun");
   const dispatch = usePullUpDispatch();
   const globalState = usePullUP();
@@ -27,9 +27,12 @@ function ListySong() {
           <ElementForListSong
             songs={songs}
             key={index}
+            index={index}
             song={song}
             disableButton={disableButton}
             setDisableButton={setDisableButton}
+            isPlaying={isPlaying}
+            setIsPlaying={setIsPlaying}
           ></ElementForListSong>
         ))}
       </div>
