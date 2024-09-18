@@ -39,7 +39,7 @@ function ElementForListSong({ songs, song, disableButton, setDisableButton }) {
           {song.title}
         </h1>
         <h4 className="text-[14px] leading-[14px] font-[400] text-center p-0">
-          {song.autor}
+          {song.artist}
         </h4>
       </div>
       {classValue === "" ? (

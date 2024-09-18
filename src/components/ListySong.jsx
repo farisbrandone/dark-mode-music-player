@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import songs from "../database.json";
+import { songs } from "../../songs";
 import { usePullUP, usePullUpDispatch } from "../hooks/usePullUpDispatch";
 import { Pause, Play } from "lucide-react";
 import ElementForListSong from "./ElementForListSong";
@@ -23,7 +23,7 @@ function ListySong() {
       ></div>
 
       <div className="w-full flex flex-col items-center gap-4 mt-8 p-4 mb-8 overflow-y-auto list-style-song">
-        {songs.data.map((song, index) => (
+        {songs.map((song, index) => (
           <ElementForListSong
             songs={songs}
             key={index}
