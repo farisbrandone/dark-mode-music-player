@@ -21,7 +21,7 @@ function Footer() {
       <div className="w-full p-0 -mb-3">
         <ChevronUp size={40} color="#666666" className="mr-auto ml-auto" />
       </div>
-      <p className="text-center w-full opacity-[0,2832] p-0 ">
+      <p className="text-center text-xs sm:text-xl w-full opacity-[0,2832] p-0 pb-2 ">
         PULL UP THE SONG LIST
       </p>
     </div>

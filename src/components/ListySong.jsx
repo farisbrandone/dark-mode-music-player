@@ -18,9 +18,9 @@ function ListySong({ isPlaying, setIsPlaying }) {
     });
   };
   return (
-    <div className="ml-0 mr-0 max-h-[72vh]  p-0 flex flex-col items-center gap-2 w-screen sm:w-full list-style  relative  ">
+    <div className="ml-0 mr-0 max-h-[72vh]  p-0 flex flex-col items-center gap-2 w-screen sm:w-full list-style  relative flex-1  ">
       <div
-        className="w-[30%] h-[5px] bg-[#272C32] line top-6 absolute ml-auto mr-auto"
+        className="w-[30%] h-[5px] bg-[#272C32] line top-6 absolute ml-auto mr-auto cursor-pointer"
         onClick={handlePullDown}
       ></div>
 

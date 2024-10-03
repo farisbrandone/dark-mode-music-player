@@ -21,7 +21,12 @@ function HandleVolume() {
   }, []);
 
   return (
-    <div className="w-full p-2 flex items-center justify-between">
+    <div
+      className={`w-full p-2 flex items-center justify-between ${
+        (globalState.textState || !globalState.pullState) &&
+        "absolute top-16 sm:top-20"
+      }`}
+    >
       <div className="w-[2rem] h-[1.8rem] flex items-center justify-center">
         <Volume2 size={32} color="#797C7F" />
       </div>

@@ -64,15 +64,15 @@ function StartStopMusicPart({ isPlaying, setIsPlaying }) {
   }, [isPlaying, globalState]); */
 
   return (
-    <div className="w-full p-4 flex items-center justify-between">
-      <div className="rounded-full w-[60px] h-[60px] go-left flex items-center justify-center cursor-pointer">
+    <div className="w-full p-4 flex items-center justify-between -translate-y-8 sm:translate-y-10 ">
+      <div className="rounded-full w-[45px] h-[45px] sm:w-[60px] sm:h-[60px] go-left flex items-center justify-center cursor-pointer">
         <SkipBack color="#797C7F" onClick={SkipBackMusik} />
       </div>
 
-      <div className=" rounded-full w-[81px] h-[80px] start-stop-button flex items-center justify-center cursor-pointer ">
+      <div className=" rounded-full w-[65px] h-[64px] sm:w-[81px] sm:h-[80px] start-stop-button flex items-center justify-center cursor-pointer ">
         <PlayStopMusicIcon isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
       </div>
-      <div className="rounded-full w-[60px] h-[60px] go-right flex items-center justify-center cursor-pointer">
+      <div className="rounded-full w-[45px] h-[45px] sm:w-[60px] sm:h-[60px] go-right flex items-center justify-center cursor-pointer">
         <SkipForward color="#797C7F" className="" onClick={SkipForwardMusic} />
       </div>
     </div>

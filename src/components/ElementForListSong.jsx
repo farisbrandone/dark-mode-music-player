@@ -63,52 +63,11 @@ function ElementForListSong({
   };
 
   useEffect(() => {
-    console.log({
-      value: isEqual2(songs[globalState.indexState], song),
-      index: index,
-    });
     if (isEqual2(songs[globalState.indexState], song)) {
       setClassValue("buttonToggle");
     } else {
       setClassValue("");
     }
-    /*setIsPlaying((prev) => !prev);*/
-    /*dispatch({
-      type: "skip-to-index",
-      index: index,
-    });*/
-    /* audioElement.current.volume = globalState.audioVolume;
-    const indexState = globalState.indexState;
-    let isEqual = isEqual2(songs[globalState.indexState], song);
-    console.log(isEqual);
-
-    if (!isEqual) {
-      setClassValue("");
-      audioElement.current.pause();
-      setIsPlaying(false);
-      return;
-    }
-
-    if (isPlaying) {
-      audioElement.current.play();
-    } else {
-      audioElement.current.pause();
-    }
-    audioElement.current.addEventListener("timeupdate", () => {
-      let currentTime, duration;
-      if (audioElement) {
-        currentTime = audioElement.current.currentTime;
-        duration = audioElement.current.duration;
-      } else {
-        currentTime = 0;
-        duration = audioElement.current.duration;
-      }
-      dispatch({
-        type: "current-total-time",
-        currentTime: currentTime,
-        duration: duration,
-      }); 
-    });*/
   }, [classValue, disableButton]);
 
   return (

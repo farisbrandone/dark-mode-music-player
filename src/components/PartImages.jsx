@@ -7,7 +7,7 @@ function PartImages() {
     <div
       className={`rounded-full w-full p-4  overflow-hidden flex items-center justify-center  ${
         !globalState.pullState
-          ? "origin-center -translate-y-40 transition-transform absolute "
+          ? "origin-center -translate-y-40 transition-transform absolute duration-500"
           : ""
       } `}
     >
@@ -15,7 +15,7 @@ function PartImages() {
         <img
           src={globalState.songsState[globalState.indexState].img_src}
           alt="Music images"
-          className="object-cover"
+          className="object-cover transition-all duration-500"
         />
       </div>
     </div>

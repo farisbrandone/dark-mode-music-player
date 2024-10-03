@@ -34,7 +34,11 @@ function MusicTimeListen() {
     );
   }, [currentTime, duration, setCurrentTime, setDuration, globalState]);
   return (
-    <div className="w-full p-2 flex items-center gap-2">
+    <div
+      className={`w-full p-2 flex items-center gap-2 ${
+        !globalState.pullState && "hidden transition-all duration-1000"
+      }`}
+    >
       <div className="w-[28px] h-[11px] p-0 text-[11px] leading-[11px] ">
         {currentTimeDisplay}
       </div>

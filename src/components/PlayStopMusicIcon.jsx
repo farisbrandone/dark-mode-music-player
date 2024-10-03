@@ -10,7 +10,7 @@ function PlayStopMusicIcon({ isPlaying, setIsPlaying }) {
           color="#FFFFFF"
           size={1}
           strokeWidth={1}
-          className="w-[60px] h-[60px]"
+          className="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px]"
           onClick={() => setIsPlaying((prev) => !prev)}
         />
       ) : (
@@ -19,7 +19,7 @@ function PlayStopMusicIcon({ isPlaying, setIsPlaying }) {
           color="#FFFFFF"
           size={1}
           strokeWidth={1}
-          className="w-[60px] h-[60px]"
+          className="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px]"
           onClick={() => setIsPlaying((prev) => !prev)}
         />
       )}

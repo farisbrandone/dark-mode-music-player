@@ -62,14 +62,12 @@ function App() {
     <PullUpContext.Provider value={globalState}>
       <PullUpDispatchContext.Provider value={dispatch}>
         <div
-          className={`w-full sm:max-w-[1024px] rounded-[28px] h-screen flex flex-col items-center gap-8 lg:gap-14 ${
+          className={`w-full sm:max-w-[1024px] rounded-[28px] transition-all duration-1000 h-screen flex flex-col items-center gap-8 lg:gap-14 relative ${
             !globalState.textState && "gap-4 lg:gap-8"
           }`}
         >
           <Headers></Headers>
-          {!globalState.textState && globalState.pullState && (
-            <HandleVolume></HandleVolume>
-          )}
+          {globalState.pullState && <HandleVolume></HandleVolume>}
           {globalState.textState && <PartImages></PartImages>}
           {globalState.textState && globalState.pullState && (
             <MusicTexts></MusicTexts>
@@ -82,6 +80,7 @@ function App() {
             src={songs[globalState.indexState].src}
             ref={audioElement}
           ></audio>
+
           {globalState.pullState ? (
             <div className="w-full">
               {false && <ArrowAndHeart></ArrowAndHeart>}
@@ -91,7 +90,7 @@ function App() {
               />
             </div>
           ) : (
-            <div className="w-full sm:min-w-[650px] flex flex-col gap-6">
+            <div className="w-full sm:min-w-[650px] flex flex-col gap-6 flex-1">
               <ArrowAndHeart></ArrowAndHeart>
               <ListySong
                 isPlaying={isPlaying}
@@ -99,6 +98,7 @@ function App() {
               ></ListySong>
             </div>
           )}
+
           {globalState.pullState && <Footer></Footer>}
         </div>
       </PullUpDispatchContext.Provider>

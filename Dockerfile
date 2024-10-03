@@ -20,7 +20,7 @@ RUN npm install
 # Copier le reste des fichiers de l'application
 COPY . .
 
-# Exposer le port sur lequel l'application va tourner
+# Exposer le port sur lequel l'application va tourneréééééééééééééééééééééééééééééééééééééé
 EXPOSE 3000
 
 # Démarrer l'application
