@@ -64,7 +64,7 @@ function StartStopMusicPart({ isPlaying, setIsPlaying }) {
   }, [isPlaying, globalState]); */
 
   return (
-    <div className="w-full p-4 flex items-center justify-between -translate-y-8 sm:translate-y-4 ">
+    <div className="w-full p-4 flex items-center justify-between -translate-y-8 sm:translate-y-0 ">
       <div className="rounded-full w-[45px] h-[45px] sm:w-[60px] sm:h-[60px] go-left flex items-center justify-center cursor-pointer">
         <SkipBack color="#797C7F" onClick={SkipBackMusik} />
       </div>
