@@ -227,3 +227,20 @@ body {
   /* Coin de la fenêtre */
   background: #bfb6a3;
 }
+
+.footer-me::before {
+  content: "";
+  border: 3px solid #d6361f;
+  height: 3px;
+  display: inline-block;
+  flex: 1;
+  margin-right: 3px;
+}
+.footer-me::after {
+  content: "";
+  border: 3px solid #d6361f;
+  height: 3px;
+  display: inline-block;
+  flex: 1;
+  margin-left: 3px;
+}
